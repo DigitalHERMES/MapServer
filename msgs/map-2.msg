@@ -1,0 +1,7 @@
+
+  FEATURE
+    POINTS
+	485007.634400379 5280120.88405952
+    END
+    TEXT "Accident nearby."
+  END
