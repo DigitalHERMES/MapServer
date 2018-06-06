@@ -13,18 +13,18 @@ MAPDIR=/var/www/html/map/htdocs
 while true; do
 
     FILENAME=$(inotifywait -e close_write -e moved_to ${SPOOLDIR} | cut -d " " -f 3)
-    
+
     if echo ${FILENAME} | grep 'map'; then
-	mv ${SPOOLDIR}/${FILENAME} ${MAPMSGDIR}/${FILENAME}
-	echo "MOVED ${FILENAME}"
+      mv ${SPOOLDIR}/${FILENAME} ${MAPMSGDIR}/${FILENAME}
+      echo "MOVED ${FILENAME}"
+
+      cat ${MAPHEADER} > ${MAPFILE}
+      for i in $(ls -1 ${MAPMSGDIR}); do
+        cat ${MAPMSGDIR}/$i >> ${MAPFILE}
+        echo "Adding to map ${i}"
+      done
+      cat ${MAPFOOTER} >> ${MAPFILE}
     fi
 
-    cat ${MAPHEADER} > ${MAPFILE}
-    for i in $(ls -1 ${MAPMSGDIR}); do
-	cat ${MAPMSGDIR}/$i >> ${MAPFILE}
-	echo "Adding to map ${i}"
-    done
-    cat ${MAPFOOTER} >> ${MAPFILE}
-    
 done;
 
