@@ -5,7 +5,7 @@ MAPHEADER=/var/www/html/map/htdocs/itasca.header
 MAPFOOTER=/var/www/html/map/htdocs/itasca.footer
 MAPMSGDIR=/var/www/html/map/htdocs/msg
 
-SPOOLDIR=/var/spool/outgoing_messages
+SPOOLDIR=/var/spool/incoming_messages
 MAPDIR=/var/www/html/map/htdocs
 
 
